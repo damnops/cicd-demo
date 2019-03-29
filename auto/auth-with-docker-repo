@@ -1,0 +1,8 @@
+#!/bin/bash -ev
+
+cd $(dirname $0)/..
+
+source ./.credential
+
+display_status "Login to registry"
+docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}

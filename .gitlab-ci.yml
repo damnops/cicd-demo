@@ -1,0 +1,21 @@
+stages:
+  - test
+  - build
+  - deploy
+
+image: docker:latest
+  
+services:
+  - docker:dind
+
+run-test:
+  stage: test
+  script:
+    - ./auto/run-test
+
+build-image:
+  stage: build
+  script:
+    - ./auto/build-docker-image
+  only:
+    - master
