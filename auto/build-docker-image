@@ -4,18 +4,17 @@ cd $(dirname $0)/..
 
 IMAGE_NAME="hello-demo"
 REPO_PREFIX="devopsession"
-TAG_SHORT_HASH=$(git rev-parse --verify --short=7 HEAD)
-TAG_HASH=$(git rev-parse --verify HEAD)
+TAG_TIME=$(export TZ=UTC-8; date +'%Y%m%d%H%M')
 
 # Build the image
 docker build -t ${REPO_PREFIX}/${IMAGE_NAME} .
 
 # Release
-display_status "Release to registry"
-docker tag ${REPO_PREFIX}/${IMAGE_NAME} ${REPO_PREFIX}/${IMAGE_NAME}:${TAG_SHORT_HASH}
+echo ">>> Release to registry <<<"
+docker tag ${REPO_PREFIX}/${IMAGE_NAME} ${REPO_PREFIX}/${IMAGE_NAME}:${TAG_TIME}
 
 ./auto/auth-with-docker-repo
 
 docker push ${REPO_PREFIX}/${IMAGE_NAME}
-docker push ${REPO_PREFIX}/${IMAGE_NAME}:${TAG_SHORT_HASH}
-display_status "Pushed docker image ${REPO_PREFIX}/${IMAGE_NAME} with tags ${TAG_SHORT_HASH}, latest"
+docker push ${REPO_PREFIX}/${IMAGE_NAME}:${TAG_TIME}
+echo ">>> Pushed docker image ${REPO_PREFIX}/${IMAGE_NAME} with tags ${TAG_TIME}, latest <<<"
