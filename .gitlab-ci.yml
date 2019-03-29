@@ -8,15 +8,15 @@ image: docker:latest
 services:
   - docker:dind
 
-run-test:
-  stage: test
-  script:
-    - ./auto/run-test
+# run-test:
+#   stage: test
+#   script:
+#     - ./auto/run-test
 
-build-image:
-  stage: test
-  script:
-    - ./auto/build-docker-image
+# build-image:
+#   stage: test
+#   script:
+#     - ./auto/build-docker-image
 
 release-image:
   stage: build
