@@ -1,4 +1,4 @@
-#!/bin/sh -ex
+#!/bin/sh -e
 
 cd $(dirname $0)/..
 source ./auto/set-env-vars
@@ -9,8 +9,8 @@ source ./auto/set-env-vars
 echo ">>> Release to registry <<<"
 docker tag ${REPO_PREFIX}/${IMAGE_NAME} ${REPO_PREFIX}/${IMAGE_NAME}:${TAG_TIME}
 
-ls auto
-./auto/auth-with-docker-repo
+echo ">>> Login to registry <<<"
+docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
 
 docker push ${REPO_PREFIX}/${IMAGE_NAME}
 docker push ${REPO_PREFIX}/${IMAGE_NAME}:${TAG_TIME}
