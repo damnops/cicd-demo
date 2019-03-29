@@ -1,0 +1,18 @@
+services:
+  - docker
+
+stages:
+  - test
+  - release
+  - deploy
+  
+jobs:  
+  include:
+    - stage: test                # naming the Tests stage
+      name: "Unit Tests"            # names the first Tests stage job
+      script: ./auto/run-test
+    - script: ./auto/build-docker-image  
+      name: "Build Docker Image"     # names the second Tests stage job
+    - stage: release
+      name: "Release Docker Image"
+      script: ./auto/release-docker-image
