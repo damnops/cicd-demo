@@ -14,8 +14,13 @@ run-test:
     - ./auto/run-test
 
 build-image:
-  stage: build
+  stage: test
   script:
     - ./auto/build-docker-image
+
+build-image:
+  stage: build
+  script:
+    - ./auto/release-docker-image
   only:
     - master

@@ -1,0 +1,16 @@
+#!/bin/sh -e
+
+cd $(dirname $0)/..
+source ./auto/set-env-vars
+
+./auto/build-docker-image
+
+# Release
+echo ">>> Release to registry <<<"
+docker tag ${REPO_PREFIX}/${IMAGE_NAME} ${REPO_PREFIX}/${IMAGE_NAME}:${TAG_TIME}
+
+./auto/auth-with-docker-repo
+
+docker push ${REPO_PREFIX}/${IMAGE_NAME}
+docker push ${REPO_PREFIX}/${IMAGE_NAME}:${TAG_TIME}
+echo ">>> Pushed docker image ${REPO_PREFIX}/${IMAGE_NAME} with tags ${TAG_TIME}, latest <<<"

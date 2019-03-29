@@ -1,8 +1,7 @@
 #!/bin/bash -e
 
 cd $(dirname $0)/..
-
-source ./.credential
+source ./auto/set-env-vars
 
 echo ">>> Login to registry <<<"
 docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
