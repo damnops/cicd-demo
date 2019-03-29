@@ -18,7 +18,7 @@ build-image:
   script:
     - ./auto/build-docker-image
 
-build-image:
+release-image:
   stage: build
   script:
     - ./auto/release-docker-image
