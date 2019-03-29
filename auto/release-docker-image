@@ -1,7 +1,12 @@
 #!/bin/sh -e
 
 cd $(dirname $0)/..
-source ./auto/set-env-vars
+IMAGE_NAME="hello-demo"
+REPO_PREFIX="devopsession"
+TAG_TIME=$(export TZ=UTC-8; date +'%Y%m%d%H%M')
+
+DOCKER_USER="devopsession"
+DOCKER_PASS="devopsession"
 
 ./auto/build-docker-image
 

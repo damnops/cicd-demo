@@ -1,7 +1,9 @@
 #!/bin/bash -e
 
 cd $(dirname $0)/..
-source ./auto/set-env-vars
+
+DOCKER_USER="devopsession"
+DOCKER_PASS="devopsession"
 
 echo ">>> Login to registry <<<"
 docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}

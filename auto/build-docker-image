@@ -1,7 +1,9 @@
 #!/bin/sh -e
 
 cd $(dirname $0)/..
-source ./auto/set-env-vars
+
+IMAGE_NAME="hello-demo"
+REPO_PREFIX="devopsession"
 
 # Build the image
 docker build -t ${REPO_PREFIX}/${IMAGE_NAME} .
