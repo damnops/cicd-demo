@@ -3,8 +3,8 @@ services:
 
 stages:
   - test
-  - release
-  - deploy
+  # - release
+  # - deploy
   
 jobs:  
   include:
@@ -13,6 +13,6 @@ jobs:
       script: ./auto/run-test
     - script: ./auto/build-docker-image  
       name: "Build Docker Image"     # names the second Tests stage job
-    - stage: release
-      name: "Release Docker Image"
-      script: ./auto/release-docker-image
+    # - stage: release
+    #   name: "Release Docker Image"
+    #   script: ./auto/release-docker-image

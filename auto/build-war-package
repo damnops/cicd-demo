@@ -2,4 +2,4 @@
 
 cd $(dirname $0)/..
 
-jar -cvf hello.war src/index.jsp
+cd src && jar -cvf hello.war index.jsp

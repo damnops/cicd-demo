@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+sed -i -e "s/__PORT__/${PORT}/g" /usr/local/tomcat/conf/server.xml
+
+exec $@
