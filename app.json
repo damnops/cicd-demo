@@ -12,7 +12,7 @@
       "quantity": 1
     }
   },
-  "name": "interview-demo",
+  "name": "cicd-demo",
   "scripts": {
   },
   "stack": "container"
