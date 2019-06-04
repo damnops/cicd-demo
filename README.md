@@ -1,4 +1,4 @@
-# Interview Demo
+# CI/CD Demo
 
 This is a CI/CD demo, the following platforms and tools are used.
 
